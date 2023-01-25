@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Drawing;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ShopTshirts.Models
 {
@@ -15,11 +16,15 @@ namespace ShopTshirts.Models
         public int categoryId { get; set; }
         public Categories Categories { get; set; }
         public string description { get; set; }
-        public byte[] productImg { get; set; }
+        public string productImg { get; set; }
         public int price { get; set; }
         public int rating { get; set; }
-        public string color { get; set; }     
+        public string color { get; set; }
         public int warranty { get; set; }
+        [DataType(DataType.DateTime)]
+        public DateTime  startDate { get; set; }
+        [DataType(DataType.DateTime)]
+        public DateTime endDate { get; set; }
 
         public Products ToEntity(Products product)
         {
@@ -29,9 +34,15 @@ namespace ShopTshirts.Models
             product.warranty = warranty;
             product.color = color;
             product.description = description;
+            product.productImg = productImg;
+            product.startDate = DateTime.Now;
+            product.endDate = endDate;
             return product;
         }
+
        
+
+
 
     }
 }

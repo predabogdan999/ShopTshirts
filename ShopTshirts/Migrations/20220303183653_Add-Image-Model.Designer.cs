@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ShopTshirts;
 
 namespace ShopTshirts.Migrations
 {
     [DbContext(typeof(ProductsContext))]
-    partial class ProductsContextModelSnapshot : ModelSnapshot
+    [Migration("20220303183653_Add-Image-Model")]
+    partial class AddImageModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -224,8 +226,6 @@ namespace ShopTshirts.Migrations
 
                     b.Property<string>("description");
 
-                    b.Property<DateTime>("endDate");
-
                     b.Property<int>("price");
 
                     b.Property<string>("productImg");
@@ -233,8 +233,6 @@ namespace ShopTshirts.Migrations
                     b.Property<string>("productName");
 
                     b.Property<int>("rating");
-
-                    b.Property<DateTime>("startDate");
 
                     b.Property<int>("warranty");
 

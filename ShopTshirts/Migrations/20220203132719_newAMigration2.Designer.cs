@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ShopTshirts;
 
 namespace ShopTshirts.Migrations
 {
     [DbContext(typeof(ProductsContext))]
-    partial class ProductsContextModelSnapshot : ModelSnapshot
+    [Migration("20220203132719_newAMigration2")]
+    partial class newAMigration2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -193,23 +195,6 @@ namespace ShopTshirts.Migrations
                     b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("ShopTshirts.Models.Image", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Path");
-
-                    b.Property<int?>("productId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("productId");
-
-                    b.ToTable("Images");
-                });
-
             modelBuilder.Entity("ShopTshirts.Models.Products", b =>
                 {
                     b.Property<int>("productId")
@@ -224,8 +209,6 @@ namespace ShopTshirts.Migrations
 
                     b.Property<string>("description");
 
-                    b.Property<DateTime>("endDate");
-
                     b.Property<int>("price");
 
                     b.Property<string>("productImg");
@@ -233,8 +216,6 @@ namespace ShopTshirts.Migrations
                     b.Property<string>("productName");
 
                     b.Property<int>("rating");
-
-                    b.Property<DateTime>("startDate");
 
                     b.Property<int>("warranty");
 
@@ -288,13 +269,6 @@ namespace ShopTshirts.Migrations
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("ShopTshirts.Models.Image", b =>
-                {
-                    b.HasOne("ShopTshirts.Models.Products", "Product")
-                        .WithMany()
-                        .HasForeignKey("productId");
                 });
 
             modelBuilder.Entity("ShopTshirts.Models.Products", b =>
